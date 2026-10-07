@@ -1,0 +1,61 @@
+{
+  "schema": "mylpk.linear.v1",
+  "name": "production",
+  "sense": "max",
+  "offset": 0.0,
+  "c": [
+    3.0,
+    2.0
+  ],
+  "A": {
+    "shape": [
+      2,
+      2
+    ],
+    "data": [
+      2.0,
+      1.0,
+      1.0,
+      2.0
+    ],
+    "indices": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "indptr": [
+      0,
+      2,
+      4
+    ]
+  },
+  "row_lower": [
+    "-inf",
+    "-inf"
+  ],
+  "row_upper": [
+    14.0,
+    14.0
+  ],
+  "lower": [
+    0.0,
+    0.0
+  ],
+  "upper": [
+    "inf",
+    "inf"
+  ],
+  "integrality": [
+    1,
+    1
+  ],
+  "var_names": [
+    "x",
+    "y"
+  ],
+  "row_names": [
+    "resource_a",
+    "resource_b"
+  ]
+}

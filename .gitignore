@@ -1,0 +1,116 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+wheelhouse/
+
+# Cython generated / compiled artifacts
+*.c
+*.cpp
+*.so
+*.dll
+*.dylib
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.pyxdep
+*.pyxbld
+
+# Keep hand-written C sources if added later
+!src/**/*.c
+!src/**/*.h
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+junit.xml
+.tox/
+.nox/
+hypothesis/
+
+# Type checkers / linters
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# Benchmarks / profiling
+.prof/
+*.prof
+*.lprof
+*.perf
+*.trace
+benchmark-results/
+benchmarks/results/
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.#*
+#*#
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs / temp files
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+.cache/
+tmp/
+temp/
+
+# Local configuration / secrets
+.env
+.env.*
+!.env.example
+*.secret
+secrets/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated docs
+docs/_build/
+site/
+
+# Solver-generated files
+*.sol
+*.lp
+*.mps
+*.sav
+*.mst
+*.bas
+
+# Local benchmark / validation outputs
+reports/local/
+reports/tmp/

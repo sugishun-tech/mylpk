@@ -1,0 +1,779 @@
+{
+  "schema": "mylpk.benchmark.v1",
+  "seed": 20261007,
+  "repeats": 5,
+  "warmups": 1,
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "cython": "3.2.4",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "processor": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpus": 5,
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "/opt/pyvenv/lib/python3.13/site-packages/numpy.libs/libscipy_openblas64_-fdde5778.so",
+        "version": "0.3.30",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "/opt/pyvenv/lib/python3.13/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so",
+        "version": "0.3.30",
+        "threading_layer": "pthreads",
+        "architecture": "SkylakeX"
+      }
+    ]
+  },
+  "notes": [
+    "Wall-clock in-process microbenchmarks on one host, not an industrial benchmark suite.",
+    "Compiled LinearProblem inputs; transformation, copies, postsolve and checks ARE timed. Model expression building is separate.",
+    "Cold means no reuse of solver state; module import and process startup are not timed.",
+    "HiGHS is invoked through scipy.optimize; this is an API-path comparison, not a standalone C++ engine comparison.",
+    "Thread environment is recorded; internal HiGHS thread counts are not independently instrumented.",
+    "GLPK and Pyomo modeling performance are NOT measured because their optional Python packages are unavailable.",
+    "Each solver has a 10-second solve limit on the cold cases. All outcomes are retained."
+  ],
+  "cold_solves": [
+    {
+      "case": "dense_20x40",
+      "shape": [
+        20,
+        40
+      ],
+      "nnz": 800,
+      "integral_variables": 0,
+      "objectives_agree": true,
+      "mylpk": {
+        "median_ms": 1.657308000176272,
+        "samples_ms": [
+          1.657308000176272,
+          1.8846590000975993,
+          1.6504469999745197,
+          1.6878839996934403,
+          1.646612000058667
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -36.360101867745335,
+          -36.360101867745335,
+          -36.360101867745335,
+          -36.360101867745335,
+          -36.360101867745335
+        ],
+        "iterations": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "highs": {
+        "median_ms": 2.5976100000661972,
+        "samples_ms": [
+          2.783629000077781,
+          2.6847310000448488,
+          2.5976100000661972,
+          2.1844790003342496,
+          2.218229999925825
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -36.360101867745286,
+          -36.360101867745286,
+          -36.360101867745286,
+          -36.360101867745286,
+          -36.360101867745286
+        ],
+        "iterations": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "native_over_highs_time": 0.6380126347427201
+    },
+    {
+      "case": "dense_80x160",
+      "shape": [
+        80,
+        160
+      ],
+      "nnz": 12800,
+      "integral_variables": 0,
+      "objectives_agree": true,
+      "mylpk": {
+        "median_ms": 3.414775999772246,
+        "samples_ms": [
+          3.2445210003970715,
+          4.389318999983516,
+          3.414775999772246,
+          4.166324000379973,
+          3.300423999917257
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -145.71231563928347,
+          -145.71231563928347,
+          -145.71231563928347,
+          -145.71231563928347,
+          -145.71231563928347
+        ],
+        "iterations": [
+          60,
+          60,
+          60,
+          60,
+          60
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "highs": {
+        "median_ms": 6.9006900002932525,
+        "samples_ms": [
+          7.743915999981255,
+          6.735150999702455,
+          6.9006900002932525,
+          7.107489000190981,
+          6.6629330003706855
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -145.71231563928356,
+          -145.71231563928356,
+          -145.71231563928356,
+          -145.71231563928356,
+          -145.71231563928356
+        ],
+        "iterations": [
+          54,
+          54,
+          54,
+          54,
+          54
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "native_over_highs_time": 0.49484558785094407
+    },
+    {
+      "case": "sparse_120x600",
+      "shape": [
+        120,
+        600
+      ],
+      "nnz": 4893,
+      "integral_variables": 0,
+      "objectives_agree": true,
+      "mylpk": {
+        "median_ms": 24.875363999854017,
+        "samples_ms": [
+          24.594514000000345,
+          24.36861400019552,
+          24.875363999854017,
+          25.88216599997395,
+          30.260359000294557
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -868.4405381054835,
+          -868.4405381054835,
+          -868.4405381054835,
+          -868.4405381054835,
+          -868.4405381054835
+        ],
+        "iterations": [
+          1010,
+          1010,
+          1010,
+          1010,
+          1010
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "highs": {
+        "median_ms": 11.55050100032895,
+        "samples_ms": [
+          12.485352999647148,
+          11.513895999996748,
+          11.55050100032895,
+          11.40438099992025,
+          12.87611099996866
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -868.440538105483,
+          -868.440538105483,
+          -868.440538105483,
+          -868.440538105483,
+          -868.440538105483
+        ],
+        "iterations": [
+          300,
+          300,
+          300,
+          300,
+          300
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "native_over_highs_time": 2.1536177520910638
+    },
+    {
+      "case": "transport_12x12",
+      "shape": [
+        24,
+        144
+      ],
+      "nnz": 288,
+      "integral_variables": 0,
+      "objectives_agree": true,
+      "mylpk": {
+        "median_ms": 2.2666130003017315,
+        "samples_ms": [
+          2.2666130003017315,
+          2.233772999716166,
+          2.260163000300963,
+          4.338392999670759,
+          4.423589999987598
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          440.66425984846995,
+          440.66425984846995,
+          440.66425984846995,
+          440.66425984846995,
+          440.66425984846995
+        ],
+        "iterations": [
+          114,
+          114,
+          114,
+          114,
+          114
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "highs": {
+        "median_ms": 2.3227669998959755,
+        "samples_ms": [
+          6.181018999996013,
+          2.402607000021817,
+          2.3136240001804254,
+          2.257860000099754,
+          2.3227669998959755
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          440.66425984846995,
+          440.66425984846995,
+          440.66425984846995,
+          440.66425984846995,
+          440.66425984846995
+        ],
+        "iterations": [
+          23,
+          23,
+          23,
+          23,
+          23
+        ],
+        "nodes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "native_over_highs_time": 0.9758245232531895
+    },
+    {
+      "case": "binary_knapsack_18",
+      "shape": [
+        3,
+        18
+      ],
+      "nnz": 54,
+      "integral_variables": 18,
+      "objectives_agree": true,
+      "mylpk": {
+        "median_ms": 16.899019999982556,
+        "samples_ms": [
+          16.360021000309644,
+          18.399623000277643,
+          16.993733000163047,
+          16.899019999982556,
+          16.756945999986783
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -223.0,
+          -223.0,
+          -223.0,
+          -223.0,
+          -223.0
+        ],
+        "iterations": [
+          89,
+          89,
+          89,
+          89,
+          89
+        ],
+        "nodes": [
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "highs": {
+        "median_ms": 2.942027000244707,
+        "samples_ms": [
+          2.942027000244707,
+          2.737819999765634,
+          2.958772000056342,
+          2.7502390003064647,
+          3.005321999808075
+        ],
+        "statuses": [
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal",
+          "optimal"
+        ],
+        "objectives": [
+          -223.0,
+          -223.0,
+          -223.0,
+          -223.0,
+          -223.0
+        ],
+        "iterations": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nodes": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "feasible": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "native_over_highs_time": 5.744005747933978
+    }
+  ],
+  "objective_updates_40x100": {
+    "native_session_21_including_initial": {
+      "median_ms": 15.757296000174392,
+      "samples_ms": [
+        16.018037000321783,
+        14.659968999694684,
+        15.757296000174392,
+        15.77882799983854,
+        15.659609000067576
+      ],
+      "statuses": [
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal"
+      ],
+      "objectives": [
+        -34.66804513560363,
+        -34.62407769651134,
+        -34.58033381917171,
+        -34.67267307501006,
+        -34.697728481725896,
+        -34.643767119790795,
+        -34.57497403988119,
+        -34.597073884099,
+        -34.68797970035394,
+        -34.66391422287624,
+        -34.73333214536376,
+        -34.622784362242015,
+        -34.60254884799737,
+        -34.69293380027618,
+        -34.70665017544295,
+        -34.66712638073992,
+        -34.71941284715313,
+        -34.65736036716291,
+        -34.65429421229934,
+        -34.72122855065945,
+        -34.73148115811178
+      ],
+      "persistent_reuses": 20
+    },
+    "native_cold_21": {
+      "median_ms": 44.76175999980114,
+      "samples_ms": [
+        45.69656300009228,
+        44.76175999980114,
+        43.64662599982694,
+        44.92564600013793,
+        43.85828300019057
+      ],
+      "statuses": [
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal"
+      ],
+      "objectives": [
+        -34.66804513560363,
+        -34.62407769651135,
+        -34.58033381917173,
+        -34.67267307501007,
+        -34.6977284817259,
+        -34.643767119790795,
+        -34.57497403988119,
+        -34.59707388409899,
+        -34.68797970035396,
+        -34.66391422287624,
+        -34.733332145363775,
+        -34.62278436224203,
+        -34.602548847997376,
+        -34.69293380027619,
+        -34.70665017544295,
+        -34.66712638073992,
+        -34.71941284715314,
+        -34.657360367162916,
+        -34.65429421229934,
+        -34.72122855065946,
+        -34.73148115811178
+      ],
+      "persistent_reuses": 0
+    },
+    "highs_cold_21": {
+      "median_ms": 74.4441500000903,
+      "samples_ms": [
+        72.00725299981059,
+        72.4401519996718,
+        75.89883499986172,
+        74.4441500000903,
+        75.43327599978511
+      ],
+      "statuses": [
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal",
+        "optimal"
+      ],
+      "objectives": [
+        -34.668045135603585,
+        -34.62407769651132,
+        -34.58033381917173,
+        -34.67267307501011,
+        -34.6977284817258,
+        -34.6437671197908,
+        -34.574974039881106,
+        -34.59707388409896,
+        -34.68797970035395,
+        -34.663914222876215,
+        -34.73333214536378,
+        -34.622784362242,
+        -34.602548847997326,
+        -34.69293380027619,
+        -34.70665017544293,
+        -34.66712638073992,
+        -34.71941284715293,
+        -34.65736036716291,
+        -34.65429421229933,
+        -34.721228550659454,
+        -34.73148115811182
+      ],
+      "persistent_reuses": 0
+    },
+    "all_objectives_agree": true
+  },
+  "expression_build": {
+    "1000": {
+      "terms": 1000,
+      "scope": "Expression construction only; variable creation and model compilation excluded.",
+      "python_sum": {
+        "median_ms": 49.440383999808546,
+        "samples_ms": [
+          49.37467500030834,
+          50.83192199981568,
+          49.440383999808546,
+          50.846945000103005,
+          48.924789000011515
+        ]
+      },
+      "cython_quicksum": {
+        "median_ms": 0.2683230000002368,
+        "samples_ms": [
+          0.27581399990594946,
+          0.25479299983999226,
+          0.2766749998954765,
+          0.2683230000002368,
+          0.2614920003907173
+        ]
+      }
+    },
+    "5000": {
+      "terms": 5000,
+      "scope": "Expression construction only; variable creation and model compilation excluded.",
+      "python_sum": {
+        "median_ms": 1190.0196970000252,
+        "samples_ms": [
+          1292.3041290000583,
+          1198.7773699997888,
+          1190.0196970000252,
+          1175.845578999997,
+          1186.3449040001797
+        ]
+      },
+      "cython_quicksum": {
+        "median_ms": 1.327382999988913,
+        "samples_ms": [
+          1.2675430002673238,
+          1.3249389999145933,
+          1.363167000363319,
+          1.327382999988913,
+          1.3415849998636986
+        ]
+      }
+    }
+  }
+}

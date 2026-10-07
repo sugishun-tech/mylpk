@@ -1,0 +1,102 @@
+
+$ /opt/pyvenv/bin/python -m pip wheel --no-deps --no-build-isolation --no-index --wheel-dir /tmp/mylpk-wheel-check-s5hy5_ew/wheels .
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /tmp/mylpk-wheel-check-s5hy5_ew/extract/mylpk
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: mylpk
+  Building wheel for mylpk (pyproject.toml): started
+  Building wheel for mylpk (pyproject.toml): finished with status 'done'
+  Created wheel for mylpk: filename=mylpk-0.1.0-cp313-cp313-linux_x86_64.whl size=1138126 sha256=d34c21cb28bd5bd7a85e556148d0235819975639943888be886fd72ac122c1b8
+  Stored in directory: /tmp/pip-ephem-wheel-cache-68nbief9/wheels/0f/08/a0/b10449ea88e01820723dabfb9b2cd3f9525c77b1dfc1711daf
+Successfully built mylpk
+
+$ /opt/pyvenv/bin/python -m pip install --no-deps --no-index --target /tmp/mylpk-wheel-check-s5hy5_ew/installed /tmp/mylpk-wheel-check-s5hy5_ew/wheels/mylpk-0.1.0-cp313-cp313-linux_x86_64.whl
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /tmp/mylpk-wheel-check-s5hy5_ew/wheels/mylpk-0.1.0-cp313-cp313-linux_x86_64.whl
+Installing collected packages: mylpk
+Successfully installed mylpk-0.1.0
+
+$ /opt/pyvenv/bin/python -c import pathlib,mylpk,myomo; print(mylpk.__file__); print(myomo.__file__); assert pathlib.Path(mylpk.__file__).is_relative_to(pathlib.Path('/tmp/mylpk-wheel-check-s5hy5_ew/installed'))
+/tmp/mylpk-wheel-check-s5hy5_ew/installed/mylpk/__init__.py
+/tmp/mylpk-wheel-check-s5hy5_ew/installed/myomo/__init__.py
+
+$ /opt/pyvenv/bin/python -m pytest -q /tmp/mylpk-wheel-check-s5hy5_ew/run/tests --junitxml=/mnt/data/mylpk/reports/installed_wheel_pytest.xml
+........................................................................ [ 16%]
+........................................................................ [ 32%]
+........................................................................ [ 48%]
+........................................................................ [ 64%]
+........................................................................ [ 80%]
+....................................................................ssss [ 96%]
+sssssssssssssssss                                                        [100%]
+428 passed, 21 skipped in 5.44s
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/certificates.py
+exact: True 115/3
+KKT gap: 0.0
+sensitivity coordinates: scaled_standard_form
+one-RHS-coordinate delta ranges: [[-0.66666667  6.33333333]
+ [-6.33333333         inf]
+ [-8.          1.        ]]
+IIS: [{'kind': 'row', 'index': 0, 'name': 'at_least_2'}, {'kind': 'row', 'index': 1, 'name': 'at_most_1'}]
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/logic_piecewise.py
+objective 2.999999999999999 amount 2.0 on 1.0
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/matrix_and_files.py
+.json round trip: 14.0
+.mps round trip: 14.0
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/production.py
+optimal: x=5, y=4, objective=23
+updated capacity: 28.0 8.0 2.0
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/quadratic_local.py
+locally_optimal 1.4142135623732415 0.7071067811866207 0.7071067811866208
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/reoptimization.py
+initial: -10.0
+[-2, -4] -14.0 reused= True
+[-5, -1] -12.0 reused= True
+[-1, -1] -4.0 reused= True
+RHS update: -3.0
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/transport.py
+6.0 {('a', 'c'): 2.0, ('a', 'd'): 0.0, ('b', 'c'): 0.0, ('b', 'd'): 4.0}
+
+$ /opt/pyvenv/bin/python /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/workflows.py
+lexicographic: 0.0 5.0 [5.0, 0.0]
+binary patterns: [{0: 1.0, 1: 0.0, 2: 0.0}, {0: 0.0, 1: 1.0, 2: 0.0}, {0: 0.0, 1: 0.0, 2: 1.0}, {0: 1.0, 1: 1.0, 2: 0.0}, {0: 0.0, 1: 1.0, 2: 1.0}, {0: 1.0, 1: 0.0, 2: 1.0}, {0: 1.0, 1: 1.0, 2: 1.0}]
+scenarios: {'small': 3.0, 'large': 8.0}
+
+$ /opt/pyvenv/bin/python -m mylpk solve /tmp/mylpk-wheel-check-s5hy5_ew/run/examples/production.json --solver highs
+{
+  "status": "optimal",
+  "objective": 23.0,
+  "solver": "highs",
+  "iterations": 0,
+  "nodes": 1,
+  "bound": 23.0,
+  "gap": 0.0,
+  "elapsed": 0.0025170189996970294,
+  "max_violation": 0.0,
+  "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "x": [
+    5.0,
+    4.0
+  ],
+  "dual": null,
+  "reduced_costs": null,
+  "row_lower_dual": null,
+  "row_upper_dual": null,
+  "lower_dual": null,
+  "upper_dual": null,
+  "activity": [
+    14.0,
+    13.0
+  ],
+  "ray": null,
+  "feasible": true
+}
+
+SUCCESS: fresh Cython source build, installed-wheel tests and all examples passed.

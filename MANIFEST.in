@@ -1,0 +1,9 @@
+include README.md CHANGELOG.md
+recursive-include src *.pyx *.pxd *.py
+recursive-include docs *.md
+recursive-include examples *.py *.json
+recursive-include benchmarks *.py
+recursive-include tests *.py
+recursive-include reports *.json *.txt *.md *.xml
+include Makefile requirements-dev.txt
+recursive-include tools *.py

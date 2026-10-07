@@ -1,0 +1,14 @@
+solve dense_20x40
+solve dense_80x160
+solve sparse_120x600
+solve transport_12x12
+solve binary_knapsack_18
+objective updates
+expression accumulation
+reports/benchmark.json
+dense_20x40 1.657 2.598 True
+dense_80x160 3.415 6.901 True
+sparse_120x600 24.875 11.551 True
+transport_12x12 2.267 2.323 True
+binary_knapsack_18 16.899 2.942 True
+updates [('native_session_21_including_initial', 15.757), ('native_cold_21', 44.762), ('highs_cold_21', 74.444)]
